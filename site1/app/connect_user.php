@@ -17,20 +17,13 @@
 
         if(password_verify($password, $passwordMatch)){
 
-            echo('<h1>Bienvenue '. $_SESSION['user'] .' !');
-
+            header("location: ../public/index.php?p=dashboard");
+            
         }else{
-
-            echo('Login ou password incorrect...');
+            
+            header("location: ../public/index.php?p=signin");
 
         }
-
-    }else{
-
-        echo('Merci de renseigner les champs de connexion.');
     }
-
-    
-
 ?>
 </pre>
