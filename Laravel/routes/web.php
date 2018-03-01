@@ -11,6 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', ['uses'=>'welcomeController@index', 'as'=>'home']);
+
+Route::get('view1', function(){
+    return view('vue1');
 });
+Route::get('article/{n}', 'articleController@show')->where('n', '[0-9]+');
+
+Route::get('facture/{n}', function($n){
+    return view('facture')->with('numero', $n);
+})->where('n', '[0-9]+');
+
+Route::get('users', 'UserController@getInfos');
+Route::post('users', 'UserController@postInfos');
+
+Route::get('contact', 'contactController@getInfos');
+Route::post('contact', 'contactController@postInfos');
