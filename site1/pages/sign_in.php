@@ -16,7 +16,7 @@
     <!-- Custom styles for this template -->
     <link href="../public/css/sign.css" rel="stylesheet">
   </head>
-
+<?php $p = "Sign in";?>
   <body class="text-center">
     <form action="../app/connect_user.php" method="POST" class="form-signin">
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
@@ -29,9 +29,9 @@
           <input type="checkbox" value="remember-me"> Remember me
         </label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit" href="index.php?p=dashboard">Sign in</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
     </form>
-     <p><a href="index.php?p=home">Retourner a l'accueil</a></p>
+     <p><a href="index.php?p=home">Back to home</a></p>
   </body>
 </html>

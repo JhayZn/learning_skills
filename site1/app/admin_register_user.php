@@ -1,13 +1,19 @@
 <pre>
 <?php
     require 'db.php';
+    if($_POST['isAdminCheck'] == NULL){
+        $_POST['isAdminCheck'] == 0;
+    }
+    //var_dump($_POST);
 
     $sql = "INSERT INTO users(usr_login, usr_password, usr_mail, usr_creation, usr_isAdmin) 
-            VALUES ('". $_POST['username'] ."', '". password_hash($_POST['password'], PASSWORD_BCRYPT) ."', '". $_POST['mail'] ."','". date('Y-m-d H:i:s') ."', 0)";
+            VALUES ('". $_POST['username'] ."', '". password_hash($_POST['password'], PASSWORD_BCRYPT) ."', '". $_POST['mail'] ."','". date('Y-m-d H:i:s') ."', '". $_POST['isAdminCheck'] ."')";
+
 
     $sqlExist = "SELECT usr_login FROM users WHERE usr_login = '". $_POST['username'] ."'";
     $query = $conn->query($sqlExist);
     $userFetch = $query->fetchAll(PDO::FETCH_ASSOC);
+    var_dump($userFetch);
     $userResult = $userFetch[0];
     $userExist = $userResult['usr_login'];
 

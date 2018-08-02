@@ -16,10 +16,15 @@
     }
     
     ob_start();
+
     if($p === 'home'){
         
         require '../pages/home.php';
         
+    }elseif($p === 'register'){
+
+        require '../pages/register.php';
+
     }elseif($p === 'signin'){
         
         require '../pages/sign_in.php';
@@ -28,7 +33,27 @@
         
         require '../pages/dashboard.php';
         
+    }elseif($p === 'admin'){
+        
+        require '../pages/admin.php';
+        
+    }elseif($p === 'list'){
+        
+        require '../pages/list_accounts.php';
+        
+    }elseif($p === 'create'){
+        
+        require '../pages/create_account.php';
+        
+    }elseif($p === 'modify'){
+        
+        require '../pages/modify_account.php';
+        
+    }else{
+        $p = '404 Not Found';
+        require '../pages/404.php';
     }
+    
     $content = ob_get_clean();
     require '../pages/template/default.php';
     

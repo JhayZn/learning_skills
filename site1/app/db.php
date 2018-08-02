@@ -8,7 +8,7 @@ try{
 
 }catch(PDOException $e){
 
-    echo 'Connection to database falied'. $e->getMessage();
+    echo 'Connection to database failed'. $e->getMessage();
 
 }
 
