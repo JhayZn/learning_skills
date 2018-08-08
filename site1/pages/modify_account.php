@@ -24,6 +24,23 @@
                 Please enter a valid email address for shipping updates.
               </div>
             </div>
+            <div class="mb-3">
+              <label for="isAdminCheck">Is Admin account ?</label>
+              <br>
+              <input type="hidden" value="0" name="isAdminCheck" class="form-check" id="isAdminCheckNo">
+              <input type="checkbox" value="1" name="isAdminCheck" class="form-check" id="isAdminCheckYes" onclick="changeValue()">
+
+              <script type="text/javascript">
+                if(<?php echo($userIsAdmin == 1) ;?>) {
+                  document.getElementById("isAdminCheckYes").checked = true;
+                  document.getElementById("isAdminCheckNo").disabled = true;
+                }
+                function changeValue(){
+                  document.getElementById("isAdminCheckNo").disabled = false;
+                }
+              </script>
+
+            </div>
             <hr class="mb-4">
             <button class="btn btn-primary btn-lg btn-block" type="submit">Update</button>
           </form>

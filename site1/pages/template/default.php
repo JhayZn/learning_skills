@@ -36,6 +36,15 @@
     </div>
 
     <!-- Bootstrap core JavaScript
+    JQuery-->
+
+    <script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous">
+    </script>
+    
+    <!--
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 

@@ -1,19 +1,16 @@
 <pre>
 <?php
     require 'db.php';
-    if($_POST['isAdminCheck'] == NULL){
-        $_POST['isAdminCheck'] == 0;
-    }
-    //var_dump($_POST);
 
     $sql = "INSERT INTO users(usr_login, usr_password, usr_mail, usr_creation, usr_isAdmin) 
-            VALUES ('". $_POST['username'] ."', '". password_hash($_POST['password'], PASSWORD_BCRYPT) ."', '". $_POST['mail'] ."','". date('Y-m-d H:i:s') ."', '". $_POST['isAdminCheck'] ."')";
+            VALUES ('". $_POST['username'] ."', '". password_hash($_POST['password'], PASSWORD_BCRYPT) ."', '". $_POST['mail'] ."','". date('Y-m-d H:i:s') ."','". $_POST['isAdminCheck'] ."')";
 
 
     $sqlExist = "SELECT usr_login FROM users WHERE usr_login = '". $_POST['username'] ."'";
+
     $query = $conn->query($sqlExist);
     $userFetch = $query->fetchAll(PDO::FETCH_ASSOC);
-    var_dump($userFetch);
+
     $userResult = $userFetch[0];
     $userExist = $userResult['usr_login'];
 
@@ -21,16 +18,18 @@
         
         if($userExist){
 
-            echo ("Aïe ! Un autre utilisateur <strong>".$_POST['username'] ."</strong> existe déjà, nous en  sommes désolés...");
-
+            header('location: ../public/index.php?p=create&s=2');
+            
         }elseif($_POST['username'] != null){
-
+            
             $conn->exec($sql);
+            header('location: ../public/index.php?p=list&s=1');
             echo ("Votre compte a bien été créé !");
             echo (" <p><a href='../public/index.php?p=signin'>Se connecter</a></p>");
-
+            
         }else{
-
+            
+            header("location: ../public/index.php?p=create&s=0");
             echo("Veuillez renseigner un nom d'utilisateur et un mot de passe");
 
         }

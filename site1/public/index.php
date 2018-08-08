@@ -50,6 +50,7 @@
         require '../pages/modify_account.php';
         
     }else{
+        
         $p = '404 Not Found';
         require '../pages/404.php';
     }

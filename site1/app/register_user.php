@@ -20,8 +20,7 @@
         }elseif($_POST['username'] != null){
 
             $conn->exec($sql);
-            echo ("Votre compte a bien été créé !");
-            echo (" <p><a href='../public/index.php?p=signin'>Se connecter</a></p>");
+            header('location: ../public/index.php?p=signin');
 
         }else{
 

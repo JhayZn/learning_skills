@@ -16,7 +16,7 @@
         $_SESSION['user'] = $userDataFetch['usr_login'];
         $passwordMatch = $userDataFetch['usr_password'];
         $userIsAdmin = $userDataFetch['usr_isAdmin'];
-        var_dump($userIsAdmin);
+        $_SESSION['isAdmin'] = $userIsAdmin;
 
         if(password_verify($password, $passwordMatch)){
 
