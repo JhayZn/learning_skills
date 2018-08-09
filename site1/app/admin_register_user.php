@@ -20,17 +20,15 @@
 
             header('location: ../public/index.php?p=create&s=2');
             
-        }elseif($_POST['username'] != null){
+        }elseif($_POST['username'] != null && $_SESSION['isAdmin'] == 1){
             
             $conn->exec($sql);
             header('location: ../public/index.php?p=list&s=1');
-            echo ("Votre compte a bien été créé !");
-            echo (" <p><a href='../public/index.php?p=signin'>Se connecter</a></p>");
+
             
         }else{
             
             header("location: ../public/index.php?p=create&s=0");
-            echo("Veuillez renseigner un nom d'utilisateur et un mot de passe");
 
         }
 

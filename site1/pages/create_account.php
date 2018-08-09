@@ -1,9 +1,8 @@
 <?php
     $p = "Administration panel";
-
-    /*$sql = "SELECT usr_id, usr_login, usr_mail, DATE_FORMAT(usr_creation, \"%d/%m/%Y\") AS inscription FROM users ORDER BY usr_creation ";
-    $query = $conn->prepare($sql);*/
     $_POST['isAdminCheck'] = 0 ;
+
+    if(!empty($_SESSION) && $_SESSION['isAdmin'] == 1){
 ?>
 
 <ul>
@@ -12,6 +11,7 @@
     <li><a href="index.php?p=delete">Delete account</a></li>
     <li><a href="index.php?p=pwreset">Reset password</a></li>
 </ul>
+
 <div>
     <div class="col-md-8 order-md-1">
           <h4 class="mb-3">Create user account</h4>
@@ -62,3 +62,21 @@
       </div>
 </div>
 <a href="../app/disconnect_user.php"><p>Se déconnecter</p></a>
+
+<?php 
+  }elseif(empty($_SESSION)){
+
+        http_response_code(401);
+        $p = http_response_code(). " - Unauthorized -";
+        echo "<h3>You are not authenticated by the server.</h3><br>";
+        echo $_SERVER['SERVER_SOFTWARE'];
+
+    }else{
+      
+        http_response_code(403);
+        $p = http_response_code(). " - Forbidden -";
+        echo "<h3>You are not allowed to access to this page.</h3><br>";
+        echo $_SERVER['SERVER_SOFTWARE'];
+
+    }
+?>

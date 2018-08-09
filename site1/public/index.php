@@ -4,6 +4,7 @@
 
 
     require '../app/db.php';
+    require '../app/secure_conn.php';
     
     if(isset($_GET['p'])){
         
@@ -34,25 +35,27 @@
         require '../pages/dashboard.php';
         
     }elseif($p === 'admin'){
-        
-        require '../pages/admin.php';
-        
+
+            require '../pages/admin.php';
+
     }elseif($p === 'list'){
-        
+
         require '../pages/list_accounts.php';
         
     }elseif($p === 'create'){
-        
+
         require '../pages/create_account.php';
         
     }elseif($p === 'modify'){
-        
+
         require '../pages/modify_account.php';
         
     }else{
-        
+
+        http_response_code(404);
         $p = '404 Not Found';
         require '../pages/404.php';
+        
     }
     
     $content = ob_get_clean();

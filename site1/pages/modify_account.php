@@ -2,6 +2,9 @@
   $p = "User account modification"; 
   require '../app/admin_fetchData_modify.php';
   $userID = $_GET['user'];
+
+  if(!empty($_SESSION) && $_SESSION['isAdmin'] == 1){
+
 ?>
 
 <div class="row">
@@ -47,3 +50,20 @@
           <p><a href="index.php?p=list">Back to panel</a></p>
         </div>
       </div>
+<?php
+  }elseif(empty($_SESSION)){
+
+        http_response_code(401);
+        $p = http_response_code(). " - Unauthorized -";
+        echo "<h3>You are not authenticated by the server.</h3><br>";
+        echo $_SERVER['SERVER_SOFTWARE'];
+
+    }else{
+      
+        http_response_code(403);
+        $p = http_response_code(). " - Forbidden -";
+        echo "<h3>You are not allowed to access to this page.</h3><br>";
+        echo $_SERVER['SERVER_SOFTWARE'];
+
+    }
+?>
